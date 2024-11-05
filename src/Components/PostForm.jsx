@@ -6,7 +6,7 @@ export default function PostForm({ newPost, handleChange, handleAddPost }) {
       <input
         type="text"
         name="title"
-        value={newPost.title} //analogous to todo in ToDo-List
+        value={newPost.title}
         onChange={handleChange}
       />
       <input

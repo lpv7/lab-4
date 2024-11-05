@@ -24,8 +24,8 @@ export default function FakeApiApp() {
 
   const fetchPosts = async () => {
     const response = await fetch(URL);
-    const dataAPI = await response.json();
-    setData(dataAPI);
+    const data = await response.json();
+    setData(data);
     setIsLoading(false);
   };
 
@@ -42,142 +42,27 @@ export default function FakeApiApp() {
     alert(`Title: ${newPost.title}, Body: ${newPost.body}`);
   };
 
-  return (
-    <div>
-      <PostForm
-        newPost={newPost}
-        handleChange={handleChange}
-        handleAddPost={handleAddPost}
-      />
-      {/* handleChange */}
-      {/* handleAddPost */}
+  if (!isLoading) {
+    return (
+      <div>
+        <PostForm
+          newPost={newPost}
+          handleChange={handleChange}
+          handleAddPost={handleAddPost}
+        />
+        {/* handleChange */}
+        {/* handleAddPost */}
 
-      {/* props: post */}
+        {/* props: post */}
 
-      <PostsContainer
-        data={data}
-        fetchPosts={fetchPosts}
-        isLoading={isLoading}
-      />
-    </div>
-  );
-}
-
-/*import { useState } from "react";
-import FormComponent from "./FormComponent";
-import TodoCardComponent from "./TodoCardComponent";
-
-export default function TodoAppContainer() {
-  const [todo, setTodo] = useState({
-    title: "",
-    checked: false,
-  }); //state to store todo
-
-  const [todoList, setTodoList] = useState([]); //state to store todo list
-
-  //function to handle input change in form
-  const handleChange = (e) => {
-    setTodo({
-      ...todo,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  //function to handle checkbox change
-  const handleCheck = (e, index) => {
-    setTodoList(
-      todoList.map((item, i) =>
-        //if index is equal to i then change checked value to opposite of current value
-        i === index ? { ...item, checked: e.target.checked } : item
-      )
+        <PostsContainer
+          data={data}
+          fetchPosts={fetchPosts}
+          isLoading={isLoading}
+        />
+      </div>
     );
-  };
-
-  //function to handle add todo
-  const handleAddTodo = () => {
-    setTodoList([...todoList, todo]);
-    setTodo({
-      title: "",
-      checked: false,
-    });
-  };
-
-  //function to handle delete todo
-  const handleDeleteTodo = (index) => {
-    setTodoList(todoList.filter((item, i) => i !== index));
-  };
-
-  return (
-    <div>
-      <h1>Todo List</h1>
-      <FormComponent
-        handleAddTodo={handleAddTodo}
-        handleChange={handleChange}
-        todo={todo}
-      />
-      <TodoCardComponent
-        handleDeleteTodo={handleDeleteTodo}
-        handleCheck={handleCheck}
-        todoList={todoList}
-      />
-    </div>
-  );
+  } else {
+    return <pre>Loading...</pre>;
+  }
 }
- */
-
-/*import { useState } from "react";
-export default function SignUpForm() {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    setUser({
-      ...user,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(
-      `Name: ${user.name}, Email: ${user.email}, Password: ${user.password}`
-    );
-  };
-
-  return (
-    <div>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Name:</label>
-        <input
-          type="text"
-          name="name"
-          value={user.name}
-          onChange={handleChange}
-        />
-        <br />
-        <label>Email:</label>
-        <input
-          type="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-        />
-        <br />
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={user.password}
-          onChange={handleChange}
-        />
-        <br />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-  );
-}
- */
