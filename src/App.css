@@ -40,3 +40,20 @@
 .read-the-docs {
   color: #888;
 }
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 700px;
+}
+.post {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+}
+button {
+  width: fit-content;
+  margin: auto;
+}

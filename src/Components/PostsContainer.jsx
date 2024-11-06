@@ -6,9 +6,8 @@ import PostCard from "./PostCard";
 export default function PostsContainer({ data, fetchPosts, isLoading }) {
   return (
     <div>
-      {/* {isLoading && <h1>Loading...</h1>} */}
-      {data.map((...newPost) => (
-        <PostCard title={data.title} body={data.body} />
+      {data.map((post) => (
+        <PostCard key={post.id} title={post.title} body={post.body} /> //key is not required here, but good to include for when edits, deletes, etc. are required
       ))}
     </div>
   );

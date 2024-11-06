@@ -2,13 +2,15 @@
 
 export default function PostForm({ newPost, handleChange, handleAddPost }) {
   return (
-    <div>
+    <div className="main">
+      Title:
       <input
         type="text"
         name="title"
         value={newPost.title}
         onChange={handleChange}
-      />
+      />{" "}
+      Body:
       <input
         type="text"
         name="body"

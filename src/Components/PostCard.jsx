@@ -2,7 +2,7 @@
 
 export default function PostCard({ title, body }) {
   return (
-    <div>
+    <div className="post">
       <h1>{title}</h1>
       <h2>{body}</h2>
     </div>

@@ -32,28 +32,27 @@ export default function FakeApiApp() {
   const handleChange = (e) => {
     setNewPost({
       ...newPost,
-      [e.target.title]: e.target.value,
-      [e.target.body]: e.target.value,
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleAddPost = (e) => {
     e.preventDefault();
-    alert(`Title: ${newPost.title}, Body: ${newPost.body}`);
+    setData([newPost, ...data]);
+    setNewPost({
+      title: "",
+      body: "",
+    }); //thanks for the help on this one!
   };
 
   if (!isLoading) {
     return (
-      <div>
+      <div className="main">
         <PostForm
           newPost={newPost}
           handleChange={handleChange}
           handleAddPost={handleAddPost}
         />
-        {/* handleChange */}
-        {/* handleAddPost */}
-
-        {/* props: post */}
 
         <PostsContainer
           data={data}
